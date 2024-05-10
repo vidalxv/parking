@@ -3,6 +3,10 @@
         android:label="parking"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAKTNhbqJ24eI1HqJ849d6LMDOTmhfoOYE"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
