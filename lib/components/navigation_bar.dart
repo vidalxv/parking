@@ -10,7 +10,7 @@ class NavigationBarApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Color.fromARGB(255, 10, 168, 160),
+          seedColor: Color.fromARGB(255, 255, 217, 0),
           brightness: Brightness.dark,
         ),
         textTheme: TextTheme(
@@ -63,29 +63,24 @@ class _NavigationExampleState extends State<NavigationExample> {
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(
-            selectedIcon: Icon(Icons.home, color: Color.fromARGB(255, 255, 255, 255)),
+            selectedIcon:
+                Icon(Icons.home, color: Color.fromARGB(255, 255, 255, 255)),
             icon: Icon(Icons.home_outlined),
             label: 'Inicio',
           ),
           NavigationDestination(
-            icon: Icon(Icons.search_outlined, color: Color.fromARGB(255, 255, 255, 255)),
+            icon: Icon(Icons.maps_home_work,
+                color: Color.fromARGB(255, 255, 255, 255)),
             label: 'Buscar',
           ),
           NavigationDestination(
-            icon: Icon(Icons.car_rental_outlined, color: Color.fromARGB(255, 255, 255, 255)),
+            icon: Icon(Icons.car_rental_outlined,
+                color: Color.fromARGB(255, 255, 255, 255)),
             label: 'Vagas',
           ),
         ],
       ),
       body: <Widget>[
-        GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 18.0,
-          ),
-        ),
-        
         Padding(
           padding: EdgeInsets.all(10.0),
           child: Column(
@@ -122,7 +117,15 @@ class _NavigationExampleState extends State<NavigationExample> {
             ],
           ),
         ),
-    
+
+        GoogleMap(
+          onMapCreated: _onMapCreated,
+          initialCameraPosition: CameraPosition(
+            target: _center,
+            zoom: 18.0,
+          ),
+        ),
+        
         Card(
           margin: const EdgeInsets.all(8.0),
           child: SizedBox(

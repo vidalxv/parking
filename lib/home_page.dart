@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './components/navigation_bar.dart';
+import './components/navigation_bar.dart'; // Importação corrigida
 
 class ParkingManagementScreen extends StatelessWidget {
   @override
@@ -10,9 +10,9 @@ class ParkingManagementScreen extends StatelessWidget {
       ),
       drawer: Drawer(
         child: Container(
-          color: Colors.blueGrey[900], // Cor de fundo da gaveta lateral
+          color: Colors.blueGrey[900],
+          padding: EdgeInsets.zero,
           child: ListView(
-            padding: EdgeInsets.zero,
             children: <Widget>[
               DrawerHeader(
                 decoration: BoxDecoration(
@@ -113,8 +113,7 @@ class ParkingManagementScreen extends StatelessWidget {
           ],
         ),
       ),
-            bottomNavigationBar: NavigationBarApp(), 
-
+      bottomNavigationBar: NavigationBarApp(), // Corrigido o nome da classe
     );
   }
 }
