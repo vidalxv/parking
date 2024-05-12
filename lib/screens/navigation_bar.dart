@@ -68,6 +68,10 @@ class _NavigationExampleState extends State<NavigationExample> {
             icon: Icon(Icons.car_rental_outlined, color: Colors.white),
             label: 'Vagas',
           ),
+          NavigationDestination(
+            icon: Icon(Icons.person_rounded, color: Colors.white),
+            label: 'Perfil',
+          ),
         ],
       ),
       body: IndexedStack(
@@ -189,6 +193,52 @@ class _NavigationExampleState extends State<NavigationExample> {
               style: TextStyle(fontSize: 24),
             ),
           ),
+          
+          // Tela 4: Perfil do usuário
+          Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage('./assets/images/perfil.jpg'),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Nome do Usuário',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Email: exemplo@email.com',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Telefone: (00) 12345-6789',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 10),  // Espaçamento adicional
+              Text(
+                'Endereço: Rua Exemplo, 123',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Data de Nascimento: 01/01/2000',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Ação ao pressionar o botão de editar perfil
+                },
+                child: Text('Editar Perfil'),
+              ),
+            ],
+          ),
+        )
+
         ],
       ),
     );
