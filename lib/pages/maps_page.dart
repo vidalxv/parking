@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 
 class MapsPage extends StatefulWidget {
   const MapsPage({Key? key}) : super(key: key);
@@ -10,12 +11,36 @@ class MapsPage extends StatefulWidget {
 
 class _MapsPageState extends State<MapsPage> {
   GoogleMapController? mapController;
-  final LatLng _center = const LatLng(-12.231149, -38.969271);
+  LatLng _center = LatLng(0, 0); // Posição inicial padrão
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+  }
 
   void _onMapCreated(GoogleMapController controller) {
     setState(() {
       mapController = controller;
     });
+  }
+
+  Future<void> _getCurrentLocation() async {
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      setState(() {
+        _center = LatLng(position.latitude, position.longitude);
+      });
+      mapController?.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: LatLng(position.latitude, position.longitude),
+          zoom: 18.0,
+        ),
+      ));
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override
