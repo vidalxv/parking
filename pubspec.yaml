@@ -79,6 +79,7 @@ flutter:
   assets:
     - ./assets/images/carro.png
     - ./assets/images/logo.png
+    - ./assets/images/perfil.jpg
   # fonts:
   #   - family: Schyler
   #     fonts:
