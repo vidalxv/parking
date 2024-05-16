@@ -11,7 +11,7 @@ class MapsPage extends StatefulWidget {
 
 class _MapsPageState extends State<MapsPage> {
   GoogleMapController? mapController;
-  LatLng _center = LatLng(0, 0); // Posição inicial padrão
+  LatLng _center = LatLng(0, 0);
 
   @override
   void initState() {
@@ -50,8 +50,10 @@ class _MapsPageState extends State<MapsPage> {
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(
           target: _center,
-          zoom: 18.0,
+          zoom: 22.0,
         ),
+        mapType: MapType.satellite,
+        myLocationEnabled: true,
       ),
     );
   }

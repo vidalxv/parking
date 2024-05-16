@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'inicio_page.dart';
 import 'maps_page.dart';
 import 'perfil_page.dart';
-import 'vagas_page.dart';
 import '../themes/theme.dart';
 
 void main() {
@@ -67,7 +66,6 @@ class _NavigationExampleState extends State<NavigationExample> {
         children: [
           InicioPage(),
           MapsPage(),
-          Vagas(),
           PerfilPage(),
         ],
       ),
@@ -98,10 +96,6 @@ class NavigationBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.map),
           label: 'Buscar',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.car_rental_outlined),
-          label: 'Vagas',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person_rounded),

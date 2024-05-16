@@ -21,8 +21,10 @@ class _PerfilPageState extends State<PerfilPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(300.0),
-              child: Image.asset("./assets/images/perfil.jpg"),
+              child: Image.network(
+                "https://cdn-icons-png.flaticon.com/512/5987/5987462.png",
+                width: 100,
+              ),
             ),
             SizedBox(height: 20),
             Text(

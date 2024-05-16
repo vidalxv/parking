@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "244370712518",
+    "project_id": "estacionamento-web",
+    "storage_bucket": "estacionamento-web.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244370712518:android:6175683df2636bdd3cb4c7",
+        "android_client_info": {
+          "package_name": "com.example.parking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbuBel6T2NxZCLPsVcF_7dQcbg22XmH_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

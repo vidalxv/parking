@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:parking/models/estacionamento_model.dart';
+import 'package:parking/widgets/estacionamento_widget.dart';
 
 class InicioPage extends StatefulWidget {
   const InicioPage({super.key});
@@ -8,6 +10,16 @@ class InicioPage extends StatefulWidget {
 }
 
 class _InicioPageState extends State<InicioPage> {
+  Estacionamento exemploEstacionamento = Estacionamento(
+    endereco: 'CASEB',
+    nome: 'Shopping Boulevard',
+    foto: 'https://allos.co/wp-content/uploads/2021/07/BlvdFeira-1.jpg',
+  );
+  Estacionamento senai = Estacionamento(
+    endereco: 'Campo Limpo',
+    nome: 'SENAI',
+    foto: 'https://jornalgrandebahia.com.br/wp-content/uploads/2018/04/Fachada-do-edificio-de-aulas-do-SENAI-de-Feira-de-Santana.jpg',
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +67,7 @@ class _InicioPageState extends State<InicioPage> {
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>( Color.fromARGB(255, 251, 251, 251)),
                         ),
-                        onPressed: () { },
+                        onPressed: () => {},
                         child: Text(
                           'Editar Veiculo',
                           style: TextStyle(
@@ -93,7 +105,11 @@ class _InicioPageState extends State<InicioPage> {
                           title: Text('Shopping Boulevard'),
                           subtitle: Text('1,0 km'),
                           trailing: ElevatedButton(
-                            onPressed: () => {},
+                            onPressed: () => {
+                              showModalBottomSheet(
+                            context: context, 
+                            builder: (context) => EstacionamentoCard(estacionamento: exemploEstacionamento),
+                          ),},
                             child: Text('Detalhes'),
                           ),
                         ),
@@ -107,7 +123,11 @@ class _InicioPageState extends State<InicioPage> {
                           title: Text('SENAI'),
                           subtitle: Text('2,4 km'),
                           trailing: ElevatedButton(
-                            onPressed: () => {},
+                            onPressed: () => {
+                              showModalBottomSheet(
+                            context: context, 
+                            builder: (context) => EstacionamentoCard(estacionamento: senai),
+                          ),},
                             child: Text('Detalhes'),
                           ),
                         ),
