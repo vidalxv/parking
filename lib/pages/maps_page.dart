@@ -34,6 +34,7 @@ class _MapsPageState extends State<MapsPage> {
       });
       mapController?.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
+          bearing: 0,
           target: LatLng(position.latitude, position.longitude),
           zoom: 18.0,
         ),
@@ -52,8 +53,8 @@ class _MapsPageState extends State<MapsPage> {
           target: _center,
           zoom: 22.0,
         ),
+        
         mapType: MapType.satellite,
-        myLocationEnabled: true,
       ),
     );
   }

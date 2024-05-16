@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:parking/models/estacionamento_model.dart';
 import 'package:parking/widgets/estacionamento_widget.dart';
 
@@ -67,7 +68,7 @@ class _InicioPageState extends State<InicioPage> {
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>( Color.fromARGB(255, 251, 251, 251)),
                         ),
-                        onPressed: () => {},
+                        onPressed: () => context.push('/veiculo'),
                         child: Text(
                           'Editar Veiculo',
                           style: TextStyle(
