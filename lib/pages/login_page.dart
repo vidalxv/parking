@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:parking/pages/cadastro_page.dart';
 import 'package:parking/pages/home_page.dart';
 import '../themes/theme.dart';
 
@@ -10,25 +12,38 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
-  void _login() {
-    String username = _usernameController.text;
-    String password = _passwordController.text;
-    // Aqui você pode adicionar a lógica de autenticação
+  FirebaseAuth _auth = FirebaseAuth.instance;
 
-    // Simulação: Se o login for bem-sucedido, navegue para a próxima tela
-    if (username.isNotEmpty && password.isNotEmpty) {
+  void _login() async {
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    try {
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      // Se o login for bem-sucedido, navegue para a próxima tela
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => NavigationBarApp()),
       );
-    } else {
-      // Se o login falhar, exiba uma mensagem de erro
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Erro: Email ou senha inválidos')),
-      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Erro: Usuário não encontrado')),
+        );
+      } else if (e.code == 'wrong-password') {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Erro: Senha incorreta')),
+        );
+      }
+    } catch (e) {
+      print(e);
     }
   }
 
@@ -48,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               SizedBox(height: 20.0),
               TextFormField(
-                controller: _usernameController,
+                controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
@@ -74,8 +89,10 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 10.0),
               ElevatedButton(
                 onPressed: () {
-                  // Adicione a lógica para registro
-                  print('Registrar');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegistroPage()),
+                  );
                 },
                 child: Text('Registrar'),
                 style: ElevatedButton.styleFrom(

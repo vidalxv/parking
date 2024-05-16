@@ -32,13 +32,15 @@ class _MapsPageState extends State<MapsPage> {
       setState(() {
         _center = LatLng(position.latitude, position.longitude);
       });
-      mapController?.animateCamera(CameraUpdate.newCameraPosition(
-        CameraPosition(
-          bearing: 0,
-          target: LatLng(position.latitude, position.longitude),
-          zoom: 18.0,
-        ),
-      ));
+      if (mapController != null) {
+        mapController!.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(
+            bearing: 0,
+            target: LatLng(position.latitude, position.longitude),
+            zoom: 18.0,
+          ),
+        ));
+      }
     } catch (e) {
       print(e);
     }
@@ -53,8 +55,9 @@ class _MapsPageState extends State<MapsPage> {
           target: _center,
           zoom: 22.0,
         ),
-        
         mapType: MapType.satellite,
+        myLocationEnabled: true, // Adiciona o botão de localização
+        myLocationButtonEnabled: true, // Habilita o botão de localização
       ),
     );
   }
